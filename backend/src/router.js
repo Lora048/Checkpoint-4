@@ -6,22 +6,38 @@ const ClientController = require("./controllers/ClientController");
 const ImageController = require("./controllers/ImageController");
 const UserController = require("./controllers/UsersController");
 
-const { authorization, sessionControl } = require("./middlewares/auth");
+// const { authorization, sessionControl } = require("./middlewares/auth");
 
 const router = express.Router();
 
 router.post("/auth/register", UserController.createOne);
 router.post("/auth/login", UserController.login);
-router.get("/auth/logout", authorization, UserController.logout);
-router.get("/auth/sessionControl", authorization, sessionControl);
+router.get(
+  "/auth/logout",
+  // authorization,
+  UserController.logout
+);
+router.get(
+  "/auth/sessionControl"
+  // authorization,
+  // sessionControl
+);
 router.post("/auth/login", UserController.login);
 
 // routes for users
 
 router.get("/users", UserController.getAll);
 router.get("/users/:id", UserController.getOne);
-router.put("/users/", authorization, UserController.updateOne);
-router.put("/users/:id", authorization, UserController.updateOne);
+router.put(
+  "/users/",
+  // authorization,
+  UserController.updateOne
+);
+router.put(
+  "/users/:id",
+  // authorization,
+  UserController.updateOne
+);
 router.delete("/users/:id", UserController.deleteOne);
 
 // routes for projects

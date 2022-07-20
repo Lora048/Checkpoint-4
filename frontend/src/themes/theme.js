@@ -1,7 +1,7 @@
 import { extendTheme } from "@chakra-ui/react";
 
 const theme = extendTheme({
-  fonts: { heading: `Poppins, sans-serif`, body: `Poppins, sans-serif` },
+  fonts: { heading: "Athiti, sans-serif", body: "Athiti, sans-serif" },
   colors: {
     transparent: "transparent",
     black: "#000",
@@ -38,7 +38,7 @@ const theme = extendTheme({
   components: {
     Divider: {
       baseStyle: {
-        borderColor: "#dbdbdb",
+        borderColor: "#000",
       },
     },
     Button: {
