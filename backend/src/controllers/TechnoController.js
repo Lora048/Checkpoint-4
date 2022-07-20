@@ -1,15 +1,24 @@
+const { getOneProject } = require("../models/projet");
 const {
   createOneTechno,
   getAllTechnos,
+  getAllTechnosByProject,
   getOneTechno,
+  getOneTechnoByProjectId,
   updateOneTechno,
   deleteOneTechno,
 } = require("../models/techno");
 
 const createOne = async (req, res) => {
+  const projetId = parseInt(req.params.projetId, 10);
+  const projet = await getOneProject(projetId);
+  if (!projet) {
+    return res.status(404).send(`Projet #${projetId} not found.`);
+  }
   try {
     const technoCreated = await createOneTechno({
       ...req.body,
+      projetId,
     });
     return res.status(201).send(technoCreated);
   } catch (e) {
@@ -57,9 +66,38 @@ const getOne = async (req, res) => {
   return null;
 };
 
+const getOneByProject = async (req, res) => {
+  const projetId = parseInt(req.params.projetId, 10);
+  const technoId = parseInt(req.params.technoId, 10);
+
+  try {
+    const techno = await getOneTechnoByProjectId(projetId, technoId);
+    if (!techno) {
+      res.status(404).send("Aucune techno trouvée pour ce projet");
+    } else {
+      return res.status(201).send(techno);
+    }
+  } catch (e) {
+    console.error(e);
+    return res.status(500).json({ error: "Problème de lecture de la techno" });
+  }
+  return null;
+};
+
 const getAll = async (req, res) => {
   try {
     const technosList = await getAllTechnos();
+    return res.status(201).send(technosList);
+  } catch (e) {
+    console.error(e);
+    return res.status(500).json({ error: "Problème de lecture des technos" });
+  }
+};
+
+const getAllByProject = async (req, res) => {
+  const projetId = parseInt(req.params.projetId, 10);
+  try {
+    const technosList = await getAllTechnosByProject(projetId);
     return res.status(201).send(technosList);
   } catch (e) {
     console.error(e);
@@ -87,4 +125,12 @@ const deleteOne = async (req, res) => {
   }
 };
 
-module.exports = { createOne, updateOne, getOne, getAll, deleteOne };
+module.exports = {
+  createOne,
+  updateOne,
+  getOne,
+  getOneByProject,
+  getAll,
+  getAllByProject,
+  deleteOne,
+};

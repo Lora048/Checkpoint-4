@@ -24,6 +24,11 @@ const getOneProject = async (id) => {
   try {
     return await prisma.projet.findFirst({
       where: { id },
+      include: {
+        techno: true,
+        image: true,
+        client: true,
+      },
     });
   } finally {
     await prisma.$disconnect();

@@ -11,14 +11,14 @@ datasource db {
 }
 
 model projet {
-  id            Int             @id @default(autoincrement())
-  nom           String          @db.VarChar(100)
-  description   String          @db.VarChar(1000)
-  date          String          @db.VarChar(100)
-  lien          String          @db.VarChar(100)
-  image         image[]
-  techno_projet techno_projet[]
-  client        client[]
+  id          Int      @id @default(autoincrement())
+  nom         String   @db.VarChar(100)
+  description String   @db.VarChar(1000)
+  date        String   @db.VarChar(100)
+  lien        String   @db.VarChar(100)
+  image       image[]
+  client      client[]
+  techno      techno[]
 }
 
 model image {
@@ -29,18 +29,11 @@ model image {
 }
 
 model techno {
-  id            Int             @id @default(autoincrement())
-  nom           String          @db.VarChar(100)
-  niveau        String          @db.VarChar(100)
-  techno_projet techno_projet[]
-}
-
-model techno_projet {
   id           Int    @id @default(autoincrement())
+  nom          String @unique @db.VarChar(100)
+  niveau       String @db.VarChar(100)
   projetId     Int
-  technoId     Int
   fk_projet_id projet @relation(fields: [projetId], references: [id], onDelete: Cascade)
-  fk_techno_id techno @relation(fields: [technoId], references: [id], onDelete: Cascade)
 }
 
 model client {

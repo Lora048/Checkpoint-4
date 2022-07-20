@@ -20,10 +20,28 @@ const getAllTechnos = async () => {
   }
 };
 
+const getAllTechnosByProject = async (projetId) => {
+  try {
+    return await prisma.techno.findMany({ where: { projetId } });
+  } finally {
+    await prisma.$disconnect();
+  }
+};
+
 const getOneTechno = async (id) => {
   try {
     return await prisma.techno.findFirst({
       where: { id },
+    });
+  } finally {
+    await prisma.$disconnect();
+  }
+};
+
+const getOneTechnoByProjectId = async (projetId, id) => {
+  try {
+    return await prisma.techno.findFirst({
+      where: { projetId, id },
     });
   } finally {
     await prisma.$disconnect();
@@ -53,7 +71,9 @@ const deleteOneTechno = async (id) => {
 module.exports = {
   createOneTechno,
   getAllTechnos,
+  getAllTechnosByProject,
   getOneTechno,
+  getOneTechnoByProjectId,
   updateOneTechno,
   deleteOneTechno,
 };
