@@ -3,8 +3,26 @@ const express = require("express");
 const ProjetController = require("./controllers/ProjetController");
 const TechnoController = require("./controllers/TechnoController");
 const ClientController = require("./controllers/ClientController");
+const ImageController = require("./controllers/ImageController");
+const UserController = require("./controllers/UsersController");
+
+const { authorization, sessionControl } = require("./middlewares/auth");
 
 const router = express.Router();
+
+router.post("/auth/register", UserController.createOne);
+router.post("/auth/login", UserController.login);
+router.get("/auth/logout", authorization, UserController.logout);
+router.get("/auth/sessionControl", authorization, sessionControl);
+router.post("/auth/login", UserController.login);
+
+// routes for users
+
+router.get("/users", UserController.getAll);
+router.get("/users/:id", UserController.getOne);
+router.put("/users/", authorization, UserController.updateOne);
+router.put("/users/:id", authorization, UserController.updateOne);
+router.delete("/users/:id", UserController.deleteOne);
 
 // routes for projects
 
@@ -35,5 +53,16 @@ router.delete("/client/:clientId", ClientController.deleteOne);
 router.post("/projet/:projetId/client", ClientController.createOne);
 router.get("/projet/:projetId/client/:clientId", ClientController.getOne);
 router.get("/projet/:projetId/clients", ClientController.getAllByProject);
+
+// routes for images
+
+router.get("/images", ImageController.getAll);
+router.get("/image/:imageId", ImageController.getOne);
+router.put("/image/:imageId", ImageController.updateOne);
+router.delete("/image/:imageId", ImageController.deleteOne);
+
+router.post("/projet/:projetId/image", ImageController.createOne);
+router.get("/projet/:projetId/image/:imageId", ImageController.getOne);
+router.get("/projet/:projetId/images", ImageController.getAllByProject);
 
 module.exports = router;
