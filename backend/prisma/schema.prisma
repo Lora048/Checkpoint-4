@@ -1,0 +1,51 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model projet {
+  id            Int             @id @default(autoincrement())
+  nom           String          @db.VarChar(100)
+  description   String          @db.VarChar(1000)
+  date          DateTime
+  lien          String          @db.VarChar(100)
+  image         image[]
+  techno_projet techno_projet[]
+  client        client[]
+}
+
+model image {
+  id           Int    @id @default(autoincrement())
+  nom          String @db.VarChar(100)
+  projetId     Int
+  fk_projet_id projet @relation(fields: [projetId], references: [id], onDelete: Cascade)
+}
+
+model techno {
+  id            Int             @id @default(autoincrement())
+  nom           String          @db.VarChar(100)
+  niveau        String          @db.VarChar(100)
+  techno_projet techno_projet[]
+}
+
+model techno_projet {
+  id           Int    @id @default(autoincrement())
+  projetId     Int
+  technoId     Int
+  fk_projet_id projet @relation(fields: [projetId], references: [id], onDelete: Cascade)
+  fk_techno_id techno @relation(fields: [technoId], references: [id], onDelete: Cascade)
+}
+
+model client {
+  id           Int    @id @default(autoincrement())
+  nom          String @db.VarChar(100)
+  projetId     Int
+  fk_projet_id projet @relation(fields: [projetId], references: [id], onDelete: Cascade)
+}
