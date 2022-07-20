@@ -14,7 +14,7 @@ model projet {
   id            Int             @id @default(autoincrement())
   nom           String          @db.VarChar(100)
   description   String          @db.VarChar(1000)
-  date          DateTime
+  date          String          @db.VarChar(100)
   lien          String          @db.VarChar(100)
   image         image[]
   techno_projet techno_projet[]
