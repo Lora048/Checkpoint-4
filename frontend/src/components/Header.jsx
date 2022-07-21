@@ -16,22 +16,16 @@ import { useState, useEffect } from "react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import PropTypes from "prop-types";
 import { BiLogOut, BiUser } from "react-icons/bi";
-// import backendAPI from "../services/backendAPI";
+import backendAPI from "../services/backendAPI";
 // import { getListforAnId } from "../../services/ProfileProUtils";
 import HeaderDrawer from "./HeaderDrawer";
 import "../styles/header.css";
 
-export default function Header({
-  isSticky = false,
-  isStickyWhite = false,
-  // employer,
-  // freelancer,
-}) {
+export default function Header({ isSticky = false, isStickyWhite = false }) {
   const [scrollPosition, setScrollPosition] = useState(0);
-  const [isSignUp] = useState(
+  const [isSignUp, setIsSignUp] = useState(
     JSON.parse(localStorage.getItem("isUserLoggedIn"))
   );
-  // const [data] = useState();
 
   const navigate = useNavigate();
 
@@ -48,19 +42,18 @@ export default function Header({
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // useEffect(() => {
-  //   if (JSON.parse(localStorage.getItem("isUserLoggedIn"))) {
-  //     backendAPI
-  //       .get("/api/auth/sessionControl")
-  //       .then((res) => {
-  //         if (res.data.sessionExpired === false) {
-  //           setIsSignUp(true);
-  //           setData(res);
-  //         }
-  //       })
-  //       .catch((err) => console.error(err));
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem("isUserLoggedIn"))) {
+      backendAPI
+        .get("/api/auth/sessionControl")
+        .then((res) => {
+          if (res.data.sessionExpired === false) {
+            setIsSignUp(true);
+          }
+        })
+        .catch((err) => console.error(err));
+    }
+  }, []);
 
   return (
     <Flex
@@ -218,7 +211,13 @@ export default function Header({
                 minW="0"
                 _hover={{ color: "pink.light" }}
               >
-                <ChevronDownIcon color="white" />
+                <ChevronDownIcon
+                  color={
+                    (isSticky && scrollPosition > 50) || isStickyWhite
+                      ? "purple.dark"
+                      : "white"
+                  }
+                />
               </MenuButton>
               <MenuList marginLeft="150px">
                 <MenuGroup title="PROFIL" color="purple.dark">
@@ -252,7 +251,13 @@ export default function Header({
                 minW="0"
                 _hover={{ color: "pink.light" }}
               >
-                <ChevronDownIcon color="white" />
+                <ChevronDownIcon
+                  color={
+                    (isSticky && scrollPosition > 50) || isStickyWhite
+                      ? "purple.dark"
+                      : "white"
+                  }
+                />
               </MenuButton>
               <MenuList marginLeft="150px">
                 <MenuGroup title="PROFIL" color="purple.dark">

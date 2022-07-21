@@ -19,6 +19,10 @@ export default function FormProjet({ isOpen, onClose, projet }) {
   const [lien, setLien] = useState("");
   const [projetId, setProjetId] = useState("");
   const [image, setImage] = useState("");
+  //   const [isSignUp, setIsSignUp] = useState(
+  //     JSON.parse(localStorage.getItem("isUserLoggedIn"))
+  //   );
+  // console.log(isSignUp)
 
   useEffect(() => {
     setNom(projet.nom);
