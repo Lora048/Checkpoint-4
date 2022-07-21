@@ -16,16 +16,9 @@ model projet {
   description String   @db.VarChar(1000)
   date        String   @db.VarChar(100)
   lien        String   @db.VarChar(100)
-  image       image[]
+  image       String   @db.VarChar(255)
   client      client[]
   techno      techno[]
-}
-
-model image {
-  id           Int    @id @default(autoincrement())
-  nom          String @db.VarChar(100)
-  projetId     Int
-  fk_projet_id projet @relation(fields: [projetId], references: [id], onDelete: Cascade)
 }
 
 model techno {

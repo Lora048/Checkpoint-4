@@ -5,6 +5,7 @@ import {
   Textarea,
   useToast,
   Button,
+  Box,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import backendAPI from "../services/backendAPI";
@@ -16,16 +17,16 @@ export default function FormProjet({ isOpen, onClose, projet }) {
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
   const [lien, setLien] = useState("");
-  const [image, setImage] = useState("");
   const [projetId, setProjetId] = useState("");
+  const [image, setImage] = useState("");
 
   useEffect(() => {
     setNom(projet.nom);
     setDescription(projet.description);
     setDate(projet.date);
     setLien(projet.lien);
-    setImage(projet.image);
     setProjetId(projet.id);
+    setImage(projet.image);
   }, [isOpen]);
 
   const updateProject = (e) => {
@@ -92,33 +93,19 @@ export default function FormProjet({ isOpen, onClose, projet }) {
       />
       <FormLabel>Illustration</FormLabel>
       <Input
-        placeholder="Insérez votre image"
+        placeholder="Illustration"
         value={image}
         onChange={(e) => setImage(e.target.value)}
       />
-      <Button
-        bg="transparent"
-        border="2px solid"
-        fontWeight="500"
-        borderColor="pink.light"
-        color="pink.light"
-        _hover={{ bgcolor: "white" }}
-        type="submit"
-        onClick={updateProject}
-      >
-        Sauvegarder les informations
-      </Button>
-      <Button
-        bgColor="white"
-        _hover={{ bgColor: "white" }}
-        onClick={onClose}
-        textAlign="left"
-        fontSize="xs"
-        fontWeight="600"
-        w="100px"
-      >
-        Annulez
-      </Button>
+
+      <Box marginTop="1rem">
+        <Button type="submit" onClick={updateProject}>
+          Sauvegarder les informations
+        </Button>
+        <Button bgColor="transparent" onClick={onClose}>
+          Annuler
+        </Button>
+      </Box>
     </FormControl>
   );
 }

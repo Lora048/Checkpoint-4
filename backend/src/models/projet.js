@@ -14,7 +14,12 @@ const createOneProject = async (project) => {
 
 const getAllProjects = async () => {
   try {
-    return await prisma.projet.findMany();
+    return await prisma.projet.findMany({
+      include: {
+        techno: true,
+        client: true,
+      },
+    });
   } finally {
     await prisma.$disconnect();
   }
@@ -26,7 +31,6 @@ const getOneProject = async (id) => {
       where: { id },
       include: {
         techno: true,
-        image: true,
         client: true,
       },
     });
