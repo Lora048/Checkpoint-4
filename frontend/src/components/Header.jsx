@@ -184,7 +184,7 @@ export default function Header({
                 BLOG
               </Text>
             </Link>
-            <Link to="/le-projet">
+            <Link to="/contact">
               <Divider
                 orientation="horizontal"
                 opacity="100"

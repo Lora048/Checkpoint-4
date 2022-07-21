@@ -36,7 +36,11 @@ export default function About() {
           >
             Faisons connaissance !
           </Text>
-          <Flex align={{ base: "baseline", lg: "center" }}>
+          <Flex
+            align="baseline"
+            mt="2rem"
+            w={{ base: "90%", md: "60%", lg: "40%" }}
+          >
             <Divider
               width="30px"
               opacity="100"
@@ -44,12 +48,12 @@ export default function About() {
               border="1px"
               mr="1.5rem"
             />
-            <Text
-              color="gray"
-              mt={{ base: "2rem", lg: "0" }}
-              mb={{ base: "1.5rem", lg: "2rem" }}
-            >
+            <Text color="gray" mb={{ base: "1.5rem", lg: "2rem" }}>
               Jeune alumni de la Wild Code School, je suis développeuse web.
+              Anciennement psychologue du travail, mes acquis dans ce domaine me
+              permettent de rapidement cerner les besoins et attentes de mes
+              clients. Mon expertise du métier est également un atout pour
+              mettre en place de nouveaux process.
             </Text>
           </Flex>
           <Link to="/contact">
@@ -78,7 +82,7 @@ export default function About() {
           mt={{ base: "5rem", lg: "10rem" }}
           mb="3rem"
         />
-        <Box textAlign="right" mr="3rem">
+        <Box textAlign="right" mr={{ base: "2rem", md: "3rem" }}>
           <Text color="gray" fontSize={{ base: "50px", lg: "64px" }} ml="2rem">
             Mes compétences
           </Text>
