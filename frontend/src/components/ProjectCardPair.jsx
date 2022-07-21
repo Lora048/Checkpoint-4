@@ -21,27 +21,29 @@ export default function ProjectCardPair({ projet }) {
     <Box
       display="flex"
       alignItems="center"
-      pt={{ lg: "11rem" }}
-      marginLeft="2rem"
+      pt={{ base: "8rem", lg: "11rem" }}
+      marginLeft={{ base: "0", lg: "2rem" }}
+      pb="3rem"
     >
       <Flex justify="space-between">
-        <Flex direction={{ base: "column-reverse", lg: "row" }}>
+        <Flex direction={{ base: "column-reverse", md: "row" }}>
           <Image
             borderRadius="2px"
             src={projet.image}
-            width={{ lg: "30%", xl: "50%", "2xl": "65%" }}
+            width={{ md: "45%", lg: "30%", xl: "50%", "2xl": "65%" }}
           />
           <Flex
             direction="column"
-            marginLeft={{ md: "5%", lg: "5%", xl: "8%" }}
-            marginRight={{ md: "5%", lg: "5%", xl: "8%" }}
+            marginLeft={{ base: "4%", md: "5%", lg: "5%", xl: "8%" }}
+            marginRight={{ base: "4%", md: "5%", lg: "5%", xl: "8%" }}
+            mb={{ base: "8%", md: "none" }}
           >
-            <Flex align="center" justify="space-between">
+            <Flex align="baseline" justify="space-between">
               <Text
                 color="gray"
                 textAlign="left"
-                fontSize={{ lg: "78px" }}
-                marginBottom={{ lg: "0" }}
+                fontSize={{ base: "35px", lg: "78px" }}
+                marginBottom={{ base: "1rem", lg: "0" }}
               >
                 {projet.nom}
               </Text>

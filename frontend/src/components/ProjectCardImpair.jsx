@@ -25,15 +25,17 @@ export default function ProjectCardPair({ projet }) {
       pt={{ base: "8rem", lg: "11rem" }}
     >
       <Flex
-        direction={{ base: "column", lg: "row" }}
+        direction={{ base: "column", md: "row" }}
         justify="space-between"
-        ml={{ lg: "5%", xl: "8%", "2xl": "20%" }}
+        ml={{ md: "5%", lg: "5%", xl: "8%", "2xl": "20%" }}
       >
         <Flex
           direction="column"
           margin="auto"
           justify="flex-end"
-          mr={{ lg: "5%", xl: "8%", "2xl": "8%" }}
+          mr={{ base: "4%", md: "5%", lg: "5%", xl: "8%", "2xl": "8%" }}
+          ml={{ base: "4%", md: "none" }}
+          mb={{ base: "8%", md: "none" }}
         >
           <Flex
             align="center"
@@ -78,7 +80,7 @@ export default function ProjectCardPair({ projet }) {
         <Image
           borderRadius="2px"
           src={projet.image}
-          width={{ base: "100vw", lg: "40%", xl: "65%" }}
+          width={{ base: "100vw", md: "45%", lg: "40%", xl: "65%" }}
         />
       </Flex>
       <Modal isOpen={isOpen} onClose={onClose}>
