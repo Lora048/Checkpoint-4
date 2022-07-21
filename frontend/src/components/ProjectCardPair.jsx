@@ -42,18 +42,33 @@ export default function ProjectCardPair({ projet }) {
           <Flex direction="column" marginLeft="2rem">
             <Flex align="center" justify="space-between" width="34rem">
               <Text
+                color="gray"
                 textAlign="left"
                 fontSize={{ base: "35px", lg: "78px" }}
                 marginBottom={{ base: "1rem", lg: "0" }}
               >
                 {projet.nom}
               </Text>
-              <Button onClick={onOpen} marginBottom={{ base: "1rem", lg: "0" }}>
+              <Button
+                onClick={onOpen}
+                size="md"
+                bg="transparent"
+                border="solid 0.5px"
+                color="gray"
+                mt="1rem"
+                _hover={{
+                  bgColor: "transparent",
+                  color: "#FAB8BA",
+                }}
+                marginBottom={{ base: "1rem", lg: "0" }}
+              >
                 Modifier
               </Button>
             </Flex>
-            <Text textAlign="left">{projet.description}</Text>
-            <Text textAlign="left">
+            <Text color="gray" textAlign="left">
+              {projet.description}
+            </Text>
+            <Text color="gray" textAlign="left">
               Accéder au site :{" "}
               <Link isExternal href={projet.lien}>
                 {projet.nom}
