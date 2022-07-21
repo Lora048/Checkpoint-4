@@ -1,28 +1,21 @@
 ## Concept
 
-This template is meant to serve as a foundation for every P2/P3 following the React-Express-MySQL stack, as learned in Wild Code School.
-It's pre-configured with a set of tools which'll help students produce industry-quality and easier-to-maintain code, while staying as simple as possible to use.
+Ce projet représente mon portfolio. En le consultant, vous trouverez toutes mes réalisations, pour un client ou dans le cadre de projets étudiants.
 
-## Setup & Use
+## Paramétrage
 
-### Project Initialization
+### Initialisation
 
-- In VSCode, install plugins **Prettier - Code formatter** and **ESLint** and configure them
-- Clone this repo, enter it
-- Run command `npm run setup`
-- _NB: To launch the backend server, you'll need an environment file with database credentials. You'll find a template one in `backend/.env.sample`_
+- Lancer la commande `npm run setup` dès l'ouverture du projet.
+- _Pour lancer le serveur backend, vous aurez besoin des variables d'environnement, renseignées avec les données relatives à la base de données. Vous trouverez un template dans `backend/.env.sample`_
 
-### Available Commands
+### Commandes disponibles
 
-- `setup` : Initialization of frontend and backend, as well as all toolings
-- `migrate` : Run the database migration script
-- `dev` : Starts both servers (frontend + backend) in one terminal
-- `dev-front` : Starts the React frontend server
-- `dev-back` : Starts the Express backend server
-- `lint` : Runs validation tools, and refuses unclean code (will be executed on every _commit_)
-- `fix` : Fixes linter errors (run it if `lint` growls on your code !)
-
-## FAQ
+- `setup` : Initialise le frontend et le backend, et installe tous les outils et packages nécessaires.
+- `dev` : Démarre les serveurs (frontend + backend) dans un seul terminal.
+- `dev-front` : Démarre le serveur frontend.
+- `dev-back` : émarre le serveur backend.
+- `fix` : Permet de fixer rapidement les erreurs trouvées par EsLint.
 
 ### Tools
 
@@ -33,3 +26,5 @@ It's pre-configured with a set of tools which'll help students produce industry-
 - _Prettier_ : "Quality of code" tool as well, focuses on the styleguide
 - _ Airbnb Standard_ : One of the most known "standards", even though it's not officially linked to ES/JS
 - _Nodemon_ : Allows to restart the server everytime a .js file is udated
+- _Prisma_ : Allows to create and update database scheme without tiping queries
+`
