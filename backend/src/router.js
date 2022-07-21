@@ -5,7 +5,7 @@ const TechnoController = require("./controllers/TechnoController");
 const ClientController = require("./controllers/ClientController");
 const UserController = require("./controllers/UsersController");
 
-// const { authorization, sessionControl } = require("./middlewares/auth");
+const { authorization, sessionControl } = require("./middlewares/auth");
 
 const router = express.Router();
 
@@ -16,11 +16,7 @@ router.get(
   // authorization,
   UserController.logout
 );
-router.get(
-  "/auth/sessionControl"
-  // authorization,
-  // sessionControl
-);
+router.get("/auth/sessionControl", authorization, sessionControl);
 router.post("/auth/login", UserController.login);
 
 // routes for users

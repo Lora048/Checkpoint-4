@@ -13,10 +13,28 @@ import {
   Image,
   Link,
 } from "@chakra-ui/react";
+import { useState, useEffect } from "react";
 import FormProjet from "./FormProjet";
+import backendAPI from "../services/backendAPI";
 
 export default function ProjectCardPair({ projet }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [isSignUp, setIsSignUp] = useState(
+    JSON.parse(localStorage.getItem("isUserLoggedIn"))
+  );
+
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem("isUserLoggedIn"))) {
+      backendAPI
+        .get("/api/auth/sessionControl")
+        .then((res) => {
+          if (res.data.sessionExpired === false) {
+            setIsSignUp(true);
+          }
+        })
+        .catch((err) => console.error(err));
+    }
+  }, []);
   return (
     <Box
       display="flex"
@@ -47,20 +65,22 @@ export default function ProjectCardPair({ projet }) {
               >
                 {projet.nom}
               </Text>
-              <Button
-                onClick={onOpen}
-                size="md"
-                bg="transparent"
-                border="solid 0.5px"
-                color="gray"
-                mt="1rem"
-                _hover={{
-                  bgColor: "transparent",
-                  color: "#FAB8BA",
-                }}
-              >
-                Modifier
-              </Button>
+              {isSignUp ? (
+                <Button
+                  onClick={onOpen}
+                  size="md"
+                  bg="transparent"
+                  border="solid 0.5px"
+                  color="gray"
+                  mt="1rem"
+                  _hover={{
+                    bgColor: "transparent",
+                    color: "#FAB8BA",
+                  }}
+                >
+                  Modifier
+                </Button>
+              ) : null}
             </Flex>
             <Text color="gray" textAlign="left">
               {projet.description}
