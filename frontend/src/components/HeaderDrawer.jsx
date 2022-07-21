@@ -26,7 +26,9 @@ export default function HeaderDrawer() {
         ref={btnRef}
         onClick={onOpen}
         aria-label="Open-Menu"
+        bgColor="transparent"
         icon={<HamburgerIcon />}
+        color="white"
       />
       <Drawer
         closeOnEsc
@@ -42,7 +44,7 @@ export default function HeaderDrawer() {
           <Flex align="center">
             <DrawerCloseButton />
             <DrawerHeader>
-              <Link to="/le-projet">
+              <Link to="/">
                 <Text
                   textAlign="left"
                   fontWeight="bold"
@@ -65,7 +67,7 @@ export default function HeaderDrawer() {
 
           <DrawerBody w="100%">
             <Flex direction="column" align="flex-start" w="100%" gap="16px">
-              <Link to="/le-projet" w="-webkit-fill-available%">
+              <Link to="/" w="-webkit-fill-available%">
                 <Text
                   color="purple.dark"
                   w="100%"
@@ -83,7 +85,7 @@ export default function HeaderDrawer() {
                   PROJETS
                 </Text>
               </Link>
-              <Link to="/le-projet" w="-webkit-fill-available%">
+              <Link to="/a-propos" w="-webkit-fill-available%">
                 <Text
                   color="purple.dark"
                   w="100%"
@@ -101,7 +103,7 @@ export default function HeaderDrawer() {
                   A PROPOS
                 </Text>
               </Link>
-              <Link to="/le-projet" w="-webkit-fill-available%">
+              <Link to="/" w="-webkit-fill-available%">
                 <Text
                   color="purple.dark"
                   w="100%"
@@ -119,7 +121,7 @@ export default function HeaderDrawer() {
                   BLOG
                 </Text>
               </Link>
-              <Link to="/le-projet" w="-webkit-fill-available%">
+              <Link to="/contact" w="-webkit-fill-available%">
                 <Text
                   color="purple.dark"
                   w="100%"

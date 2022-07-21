@@ -77,7 +77,7 @@ export default function Header({
       zIndex="999"
     >
       <Flex w="100%" alignItems="center" justify="space-between">
-        <Link to="/le-projet">
+        <Link to="/">
           <Text
             color={
               (isSticky && scrollPosition > 50) || isStickyWhite
@@ -113,7 +113,7 @@ export default function Header({
             width="30rem"
             marginLeft={{ base: "6rem", lg: "20rem", xl: "35rem" }}
           >
-            <Link to="/le-projet">
+            <Link to="/">
               <Divider
                 orientation="horizontal"
                 opacity="100"
@@ -141,7 +141,7 @@ export default function Header({
                 PROJETS
               </Text>
             </Link>
-            <Link to="/le-projet">
+            <Link to="/a-propos">
               <Divider
                 orientation="horizontal"
                 opacity="100"
