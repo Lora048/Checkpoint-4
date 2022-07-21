@@ -19,26 +19,29 @@ export default function ProjectCardPair({ projet }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box
-      w={{ base: "100%" }}
       display="flex"
       justifyContent={{ base: "center", lg: "flex-end" }}
       alignItems="center"
       pt={{ base: "8rem", lg: "11rem" }}
     >
-      <Flex direction={{ base: "column", lg: "row" }} justify="space-between">
+      <Flex
+        direction={{ base: "column", md: "row" }}
+        justify="space-between"
+        ml={{ md: "5%", lg: "5%", xl: "8%", "2xl": "20%" }}
+      >
         <Flex
           direction="column"
-          // width={{ base: "80%", lg: "40%" }}
-          marginRight={{ base: "0", lg: "3rem" }}
           margin="auto"
-          marginLeft="3rem"
+          justify="flex-end"
+          mr={{ base: "4%", md: "5%", lg: "5%", xl: "8%", "2xl": "8%" }}
+          ml={{ base: "4%", md: "none" }}
+          mb={{ base: "8%", md: "none" }}
         >
           <Flex
             align="center"
             justify="space-between"
             height="auto"
             direction="row"
-            width="40rem"
           >
             <Text
               color="gray"
@@ -77,8 +80,7 @@ export default function ProjectCardPair({ projet }) {
         <Image
           borderRadius="2px"
           src={projet.image}
-          height={{ base: "50vh", lg: "100%" }}
-          width={{ base: "100vh", lg: "100%" }}
+          width={{ base: "100vw", md: "45%", lg: "40%", xl: "65%" }}
         />
       </Flex>
       <Modal isOpen={isOpen} onClose={onClose}>

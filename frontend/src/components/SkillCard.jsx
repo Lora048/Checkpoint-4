@@ -34,7 +34,11 @@ export default function SkillCard({ techno }) {
           ) : null
         )}
       </Flex>
-      <Text color="gray" fontWeight="semibold">
+      <Text
+        color="gray"
+        fontWeight="semibold"
+        fontSize={{ base: "sm", md: "md" }}
+      >
         {techno.nom}
       </Text>
     </Flex>

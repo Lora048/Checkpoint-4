@@ -31,7 +31,7 @@ export default function Header({
   const [isSignUp] = useState(
     JSON.parse(localStorage.getItem("isUserLoggedIn"))
   );
-  const [data] = useState();
+  // const [data] = useState();
 
   const navigate = useNavigate();
 
@@ -73,7 +73,7 @@ export default function Header({
       paddingX={{ base: "2%", lg: "5%" }}
       paddingY="30px"
       bgColor={((isSticky && scrollPosition > 50) || isStickyWhite) && "white"}
-      w={isSticky || isStickyWhite ? "100vw" : "100vp"}
+      w={isSticky || isStickyWhite ? "100%" : "100vp"}
       zIndex="999"
     >
       <Flex w="100%" alignItems="center" justify="space-between">
@@ -111,7 +111,12 @@ export default function Header({
           <Flex
             justify="space-between"
             width="30rem"
-            marginLeft={{ base: "6rem", lg: "20rem", xl: "35rem" }}
+            marginLeft={{
+              base: "10rem",
+              lg: "20rem",
+              xl: "35rem",
+              "2xl": "52rem",
+            }}
           >
             <Link to="/">
               <Divider
@@ -129,13 +134,7 @@ export default function Header({
                 }
                 fontWeight="bold"
                 _hover={{
-                  bgImage:
-                    "linear-gradient(to right, #f2366f 33%, #a423ad 33%, #a7197f 66%, #4d1582 66%)",
-                  bgSize: "306% 100%",
-                  bgPosition: "100% 0",
-                  transition: "2s background-position",
-                  animation: "moveGradient2 4s alternate infinite",
-                  bgClip: "text",
+                  color: "#FAB8BA",
                 }}
               >
                 PROJETS
@@ -157,13 +156,7 @@ export default function Header({
                 }
                 fontWeight="bold"
                 _hover={{
-                  bgImage:
-                    "linear-gradient(to right, #f2366f 33%, #a423ad 33%, #a7197f 66%, #4d1582 66%)",
-                  bgSize: "306% 100%",
-                  bgPosition: "100% 0",
-                  transition: "2s background-position",
-                  animation: "moveGradient2 4s alternate infinite",
-                  bgClip: "text",
+                  color: "#FAB8BA",
                 }}
               >
                 A PROPOS
@@ -185,19 +178,13 @@ export default function Header({
                 }
                 fontWeight="bold"
                 _hover={{
-                  bgImage:
-                    "linear-gradient(to right, #f2366f 33%, #a423ad 33%, #a7197f 66%, #4d1582 66%)",
-                  bgSize: "306% 100%",
-                  bgPosition: "100% 0",
-                  transition: "2s background-position",
-                  animation: "moveGradient2 4s alternate infinite",
-                  bgClip: "text",
+                  color: "#FAB8BA",
                 }}
               >
                 BLOG
               </Text>
             </Link>
-            <Link to="/le-projet">
+            <Link to="/contact">
               <Divider
                 orientation="horizontal"
                 opacity="100"
@@ -213,13 +200,7 @@ export default function Header({
                 }
                 fontWeight="bold"
                 _hover={{
-                  bgImage:
-                    "linear-gradient(to right, #f2366f 33%, #a423ad 33%, #a7197f 66%, #4d1582 66%)",
-                  bgSize: "306% 100%",
-                  bgPosition: "100% 0",
-                  transition: "2s background-position",
-                  animation: "moveGradient2 4s alternate infinite",
-                  bgClip: "text",
+                  color: "#FAB8BA",
                 }}
               >
                 CONTACT
@@ -237,22 +218,14 @@ export default function Header({
                 minW="0"
                 _hover={{ color: "pink.light" }}
               >
-                <ChevronDownIcon />
+                <ChevronDownIcon color="white" />
               </MenuButton>
               <MenuList marginLeft="150px">
                 <MenuGroup title="PROFIL" color="purple.dark">
                   <MenuItem
                     icon={<BiUser />}
                     onClick={() => {
-                      if (data.data.userRole === "freelancer") {
-                        navigate(`/profil/${data.data.roleId}`);
-                      }
-                      if (data.data.userRole === "employer") {
-                        navigate(`/profil-employer/${data.data.roleId}`);
-                      }
-                      if (data.data.userRole === "coordinator") {
-                        navigate(`/profil-coordinator/${data.data.roleId}`);
-                      }
+                      navigate(`/dashboard`);
                     }}
                   >
                     DASHBOARD
@@ -269,33 +242,41 @@ export default function Header({
               </MenuList>
             </Menu>
           ) : (
-            <Flex
-              justify="space-between"
-              align="center"
-              gap={{ base: "8px", lg: "16px" }}
-            >
-              <Link to="/login">
-                <Button
-                  variant={
-                    (isSticky && scrollPosition > 50) || isStickyWhite
-                      ? "outline_Purple"
-                      : "outline_White_Purple"
-                  }
-                >
-                  CONNEXION
-                </Button>
-              </Link>
-              <Link to="/register">
-                <Button
-                  variant="solid_PrimaryColor"
-                  borderColor={
-                    isSticky && scrollPosition <= 50 ? "white" : "pink.light"
-                  }
-                >
-                  INSCRIPTION
-                </Button>
-              </Link>
-            </Flex>
+            <Menu>
+              <MenuButton
+                as={Button}
+                rounded="full"
+                variant="unstyled"
+                color="purple.average"
+                cursor="pointer"
+                minW="0"
+                _hover={{ color: "pink.light" }}
+              >
+                <ChevronDownIcon color="white" />
+              </MenuButton>
+              <MenuList marginLeft="150px">
+                <MenuGroup title="PROFIL" color="purple.dark">
+                  <MenuItem
+                    icon={<BiUser />}
+                    onClick={() => {
+                      navigate(`/login`);
+                    }}
+                  >
+                    CONNEXION
+                  </MenuItem>
+                  <MenuDivider />
+                  <MenuItem
+                    onClick={() => {
+                      navigate(`/register`);
+                    }}
+                    color="pink.light"
+                    icon={<BiLogOut />}
+                  >
+                    INSCRIPTION
+                  </MenuItem>
+                </MenuGroup>
+              </MenuList>
+            </Menu>
           )}
         </Flex>
         <HeaderDrawer />
