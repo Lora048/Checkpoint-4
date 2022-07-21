@@ -1,20 +1,10 @@
-import { Box, Text, Divider, Flex, Button } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { BiPaperPlane } from "react-icons/bi";
+import { Box, Text, Divider, Button } from "@chakra-ui/react";
+
+import { FiArrowRight } from "react-icons/fi";
 import fondMobile from "../assets/background-mobile.png";
 import Header from "../components/Header";
-import SkillCard from "../components/SkillCard";
-import backendAPI from "../services/backendAPI";
 
-export default function About() {
-  const [technos, setTechnos] = useState([]);
-  useEffect(() => {
-    backendAPI.get(`/api/technos`).then((response) => {
-      setTechnos(response.data);
-    });
-  }, []);
-
+export default function Contact() {
   return (
     <Box
       bgImage={fondMobile}
@@ -32,42 +22,35 @@ export default function About() {
           <Text
             color="gray"
             fontSize={{ base: "50px", lg: "64px" }}
-            lineHeight="3rem"
+            lineHeight={{ base: "3rem", lg: "5rem" }}
+            mb={{ base: "2rem", lg: "0" }}
           >
-            Faisons connaissance !
+            Prêt à échanger sur un projet ?
           </Text>
-          <Flex align={{ base: "baseline", lg: "center" }}>
-            <Divider
-              width="30px"
-              opacity="100"
-              borderColor="gray"
-              border="1px"
-              mr="1.5rem"
-            />
-            <Text
-              color="gray"
-              mt={{ base: "2rem", lg: "0" }}
-              mb={{ base: "1.5rem", lg: "2rem" }}
-            >
-              Jeune alumni de la Wild Code School, je suis développeuse web.
-            </Text>
-          </Flex>
-          <Link to="/contact">
-            <Button
-              rightIcon={<BiPaperPlane />}
-              size="md"
-              bg="transparent"
-              border="solid 0.5px"
-              color="gray"
-              mt="1rem"
-              _hover={{
-                bgColor: "transparent",
-                color: "#C97E8C",
-              }}
-            >
-              Discutons
-            </Button>
-          </Link>
+          <Text
+            color="gray"
+            fontSize={{ base: "30px", lg: "40px" }}
+            lineHeight={{ base: "3rem", md: "5rem" }}
+          >
+            Contactez moi par mail
+          </Text>
+          <Button
+            bgColor="transparent"
+            color="gray"
+            fontSize={{ base: "20px", lg: "30px" }}
+            lineHeight={{ base: "3rem" }}
+            rightIcon={<FiArrowRight />}
+            py="0"
+            my="O"
+            _active={{
+              bg: "transparent",
+            }}
+            _focus={{
+              bg: "transparent",
+            }}
+          >
+            loraperrichon@gmail.com
+          </Button>
         </Box>
         <Divider
           ml="40%"
@@ -79,20 +62,13 @@ export default function About() {
           mb="3rem"
         />
         <Box textAlign="right" mr="3rem">
-          <Text color="gray" fontSize={{ base: "50px", lg: "64px" }} ml="2rem">
-            Mes compétences
-          </Text>
-          <Flex
-            justify="space-between"
-            width={{ base: "100%", lg: "70%" }}
-            ml={{ base: "0", lg: "30%" }}
-            align="baseline"
-            wrap="wrap"
+          <Text
+            color="gray"
+            fontSize={{ base: "30px", lg: "40px" }}
+            ml={{ base: "1rem", lg: "2rem" }}
           >
-            {technos.map((techno) => (
-              <SkillCard techno={techno} />
-            ))}
-          </Flex>
+            Remplissez ce formulaire
+          </Text>
         </Box>
       </Box>
     </Box>

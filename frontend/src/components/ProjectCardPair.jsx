@@ -19,33 +19,29 @@ export default function ProjectCardPair({ projet }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box
-      w={{ base: "100%" }}
-      maxW="100vh"
       display="flex"
-      // justifyContent={{ base: "center" }}
       alignItems="center"
-      pt={{ base: "8rem", lg: "11rem" }}
+      pt={{ lg: "11rem" }}
+      marginLeft="2rem"
     >
       <Flex justify="space-between">
-        <Flex
-          // width={{ base: "80%", lg: "40%" }}
-          // marginRight={{ base: "0", lg: "3rem" }}
-          margin="auto"
-          marginLeft="1rem"
-        >
+        <Flex direction={{ base: "column-reverse", lg: "row" }}>
           <Image
             borderRadius="2px"
             src={projet.image}
-            height={{ base: "50vh", lg: "100%" }}
-            width={{ base: "100vh", lg: "100%" }}
+            width={{ lg: "30%", xl: "50%", "2xl": "65%" }}
           />
-          <Flex direction="column" marginLeft="2rem">
-            <Flex align="center" justify="space-between" width="34rem">
+          <Flex
+            direction="column"
+            marginLeft={{ md: "5%", lg: "5%", xl: "8%" }}
+            marginRight={{ md: "5%", lg: "5%", xl: "8%" }}
+          >
+            <Flex align="center" justify="space-between">
               <Text
                 color="gray"
                 textAlign="left"
-                fontSize={{ base: "35px", lg: "78px" }}
-                marginBottom={{ base: "1rem", lg: "0" }}
+                fontSize={{ lg: "78px" }}
+                marginBottom={{ lg: "0" }}
               >
                 {projet.nom}
               </Text>
@@ -60,7 +56,6 @@ export default function ProjectCardPair({ projet }) {
                   bgColor: "transparent",
                   color: "#FAB8BA",
                 }}
-                marginBottom={{ base: "1rem", lg: "0" }}
               >
                 Modifier
               </Button>
