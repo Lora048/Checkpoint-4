@@ -1,36 +1,36 @@
-import Counter from "@components/Counter";
-import logo from "@assets/logo.svg";
+import { Box } from "@chakra-ui/react";
+import { useState, useEffect } from "react";
+import fondMobile from "../assets/background-mobile.png";
+import Header from "../components/Header";
+import backendAPI from "../services/backendAPI";
+import ProjectCardPair from "../components/ProjectCardPair";
+import ProjectCardImPair from "../components/ProjectCardImpair";
 
 export default function Home() {
+  const [projets, setProjets] = useState([]);
+
+  useEffect(() => {
+    backendAPI.get(`/api/projets`).then((response) => {
+      setProjets(response.data);
+    });
+  }, []);
+
   return (
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <p>Hello Vite + React !</p>
+    <Box
+      bgImage={fondMobile}
+      bgRepeat="no-repeat"
+      bgSize="cover"
+      bgPos="center"
+    >
+      <Header onDark isSticky isStickyWhite={false} />
 
-      <Counter />
-
-      <p>
-        Edit <code>App.jsx</code> and save to test HMR updates.
-      </p>
-      <p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        {" | "}
-        <a
-          className="App-link"
-          href="https://vitejs.dev/guide/features.html"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Vite Docs
-        </a>
-      </p>
-    </header>
+      {projets.map((projet) =>
+        projet.id % 2 === 0 ? (
+          <ProjectCardPair projet={projet} />
+        ) : (
+          <ProjectCardImPair projet={projet} />
+        )
+      )}
+    </Box>
   );
 }
