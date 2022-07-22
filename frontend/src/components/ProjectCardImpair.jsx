@@ -38,20 +38,21 @@ export default function ProjectCardPair({ projet }) {
   return (
     <Box
       display="flex"
-      justifyContent={{ base: "center", lg: "flex-end" }}
+      justifyContent={{ base: "center" }}
       alignItems="center"
       pt={{ base: "8rem", lg: "11rem" }}
     >
       <Flex
         direction={{ base: "column", md: "row" }}
         justify="space-between"
-        ml={{ md: "5%", lg: "5%", xl: "8%", "2xl": "20%" }}
+        ml={{ md: "5%", lg: "5%", xl: "3%", "2xl": "8%" }}
       >
         <Flex
           direction="column"
           margin="auto"
-          justify="flex-end"
-          mr={{ base: "4%", md: "5%", lg: "5%", xl: "8%", "2xl": "8%" }}
+          justify="center"
+          align="baseline"
+          mr={{ base: "4%", md: "5%", lg: "5%", xl: "5%", "2xl": "8%" }}
           ml={{ base: "4%", md: "none" }}
           mb={{ base: "8%", md: "none" }}
         >
@@ -60,6 +61,7 @@ export default function ProjectCardPair({ projet }) {
             justify="space-between"
             height="auto"
             direction="row"
+            width={{ base: "95vw", md: "50vw", lg: "40vw", xl: "40vw" }}
           >
             <Text
               color="gray"
@@ -96,11 +98,13 @@ export default function ProjectCardPair({ projet }) {
             </Link>
           </Text>
         </Flex>
+        {/* <Box maxWidth="70vw"> */}
         <Image
           borderRadius="2px"
           src={projet.image}
-          width={{ base: "100vw", md: "45%", lg: "40%", xl: "65%" }}
+          width={{ md: "35%", lg: "30%", xl: "50%", "2xl": "65%" }}
         />
+        {/* </Box> */}
       </Flex>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />

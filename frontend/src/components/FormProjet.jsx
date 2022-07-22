@@ -13,25 +13,25 @@ import backendAPI from "../services/backendAPI";
 export default function FormProjet({ isOpen, onClose, projet }) {
   const toast = useToast();
 
+  const currentUrl = document.location.href;
+
   const [nom, setNom] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
   const [lien, setLien] = useState("");
   const [projetId, setProjetId] = useState("");
   const [image, setImage] = useState("");
-  //   const [isSignUp, setIsSignUp] = useState(
-  //     JSON.parse(localStorage.getItem("isUserLoggedIn"))
-  //   );
-  // console.log(isSignUp)
 
-  useEffect(() => {
-    setNom(projet.nom);
-    setDescription(projet.description);
-    setDate(projet.date);
-    setLien(projet.lien);
-    setProjetId(projet.id);
-    setImage(projet.image);
-  }, [isOpen]);
+  if (projet) {
+    useEffect(() => {
+      setNom(projet.nom);
+      setDescription(projet.description);
+      setDate(projet.date);
+      setLien(projet.lien);
+      setProjetId(projet.id);
+      setImage(projet.image);
+    }, [isOpen]);
+  }
 
   const updateProject = (e) => {
     e.preventDefault();
@@ -47,6 +47,42 @@ export default function FormProjet({ isOpen, onClose, projet }) {
         if (response) {
           toast({
             title: "Le projet a bien été modifié.",
+            status: "success",
+            duration: 7000,
+            position: "bottom-right",
+            isClosable: true,
+          });
+          onClose();
+        }
+      })
+      .catch((error) => {
+        if (error) {
+          toast({
+            title: "Veuillez renseigner tous les champs obligatoires",
+            status: "error",
+            duration: 7000,
+            position: "bottom-right",
+            isClosable: true,
+          });
+        }
+        console.warn(error);
+      });
+  };
+
+  const createProject = (e) => {
+    e.preventDefault();
+    backendAPI
+      .post(`/api/projet`, {
+        nom,
+        description,
+        date,
+        lien,
+        image,
+      })
+      .then((response) => {
+        if (response) {
+          toast({
+            title: "Le projet a bien été créé.",
             status: "success",
             duration: 7000,
             position: "bottom-right",
@@ -103,9 +139,16 @@ export default function FormProjet({ isOpen, onClose, projet }) {
       />
 
       <Box marginTop="1rem">
-        <Button type="submit" onClick={updateProject}>
-          Sauvegarder les informations
-        </Button>
+        {currentUrl === "http://localhost:3000/" ? (
+          <Button type="submit" onClick={updateProject}>
+            Sauvegarder les informations
+          </Button>
+        ) : (
+          <Button type="submit" onClick={createProject}>
+            Sauvegarder les informations
+          </Button>
+        )}
+
         <Button bgColor="transparent" onClick={onClose}>
           Annuler
         </Button>

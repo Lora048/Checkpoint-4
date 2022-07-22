@@ -1,4 +1,4 @@
-import { Box, Text, Divider, Flex, Button } from "@chakra-ui/react";
+import { Box, Text, Divider, Flex, Button, Tag } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { BiPaperPlane } from "react-icons/bi";
@@ -9,6 +9,7 @@ import backendAPI from "../services/backendAPI";
 
 export default function About() {
   const [technos, setTechnos] = useState([]);
+
   useEffect(() => {
     backendAPI.get(`/api/technos`).then((response) => {
       setTechnos(response.data);
@@ -96,6 +97,28 @@ export default function About() {
             {technos.map((techno) => (
               <SkillCard techno={techno} />
             ))}
+          </Flex>
+        </Box>
+        <Divider
+          width="60%"
+          borderColor="gray"
+          border="1px"
+          opacity="30%"
+          mt={{ base: "5rem", lg: "10rem" }}
+          mb="3rem"
+        />
+        <Box textAlign="left" mr={{ base: "2rem", md: "3rem" }}>
+          <Flex alignItems="center">
+            <Text
+              color="gray"
+              fontSize={{ base: "50px", lg: "64px" }}
+              ml="2rem"
+            >
+              Clients
+            </Text>
+            <Tag ml="1rem" size="sm">
+              SOON
+            </Tag>
           </Flex>
         </Box>
       </Box>
