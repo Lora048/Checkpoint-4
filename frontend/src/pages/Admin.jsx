@@ -28,13 +28,19 @@ export default function Admin() {
       bgRepeat="no-repeat"
       bgSize="cover"
       bgPos="center"
-      height="100vw"
+      height={{ base: "100vh", md: "100vw" }}
     >
       <Header onDark isSticky isStickyWhite={false} />
       <Flex justify="center" pt="8rem">
         <Image src={banniere} width="90%" borderRadius="10px" />
       </Flex>
-      <Flex justify="space-around" mt="5rem">
+      <Flex
+        justify={{ base: "space-between", md: "space-around" }}
+        mt="5rem"
+        direction={{ base: "column", lg: "row" }}
+        alignItems={{ base: "center", lg: "none" }}
+        height="15rem"
+      >
         <Button
           leftIcon={<AddIcon />}
           size="lg"

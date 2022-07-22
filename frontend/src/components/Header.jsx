@@ -295,7 +295,7 @@ export default function Header({ isSticky = false, isStickyWhite = false }) {
                     onClick={() => {
                       navigate(`/register`);
                     }}
-                    color="pink.light"
+                    color="#FAB8BA"
                     icon={<BiLogOut />}
                   >
                     INSCRIPTION

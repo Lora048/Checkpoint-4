@@ -87,15 +87,22 @@ export default function Contact() {
               direction="column"
               mt="2rem"
             >
-              <FormLabel>Prénom</FormLabel>
+              <FormLabel color="gray">Prénom</FormLabel>
               <Input placeholder="Prénom" />
-              <FormLabel>Nom</FormLabel>
+              <FormLabel color="gray">Nom</FormLabel>
               <Input placeholder="Nom" />
-              <FormLabel>E-mail</FormLabel>
+              <FormLabel color="gray">E-mail</FormLabel>
               <Input placeholder="E-mail" />
-              <FormLabel>Votre demande</FormLabel>
+              <FormLabel color="gray">Votre demande</FormLabel>
               <Textarea placeholder="Votre demande" />
-              <Button mt="1.5rem" type="submit">
+              <Button
+                border="solid 0.5px"
+                color="gray"
+                borderColor="gray"
+                variant="outline"
+                mt="1.5rem"
+                type="submit"
+              >
                 Envoyer votre demande
               </Button>
             </Flex>

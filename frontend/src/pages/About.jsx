@@ -1,25 +1,18 @@
-import { Box, Text, Divider, Flex, Button } from "@chakra-ui/react";
+import { Box, Text, Divider, Flex, Button, Tag } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { BiPaperPlane } from "react-icons/bi";
 import fondMobile from "../assets/background-mobile.png";
 import Header from "../components/Header";
 import SkillCard from "../components/SkillCard";
-import ClientCard from "../components/ClientCard";
 import backendAPI from "../services/backendAPI";
 
 export default function About() {
   const [technos, setTechnos] = useState([]);
-  const [clients, setClients] = useState([]);
+
   useEffect(() => {
     backendAPI.get(`/api/technos`).then((response) => {
       setTechnos(response.data);
-    });
-  }, []);
-
-  useEffect(() => {
-    backendAPI.get(`/api/clients`).then((response) => {
-      setClients(response.data);
     });
   }, []);
 
@@ -115,19 +108,17 @@ export default function About() {
           mb="3rem"
         />
         <Box textAlign="left" mr={{ base: "2rem", md: "3rem" }}>
-          <Text color="gray" fontSize={{ base: "50px", lg: "64px" }} ml="2rem">
-            Clients
-          </Text>
-          <Flex
-            justify="space-between"
-            width={{ base: "100%", lg: "70%" }}
-            ml={{ base: "0", lg: "30%" }}
-            align="baseline"
-            wrap="wrap"
-          >
-            {clients.map((client) => (
-              <ClientCard client={client} />
-            ))}
+          <Flex alignItems="center">
+            <Text
+              color="gray"
+              fontSize={{ base: "50px", lg: "64px" }}
+              ml="2rem"
+            >
+              Clients
+            </Text>
+            <Tag ml="1rem" size="sm">
+              SOON
+            </Tag>
           </Flex>
         </Box>
       </Box>
