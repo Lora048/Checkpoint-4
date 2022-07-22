@@ -1,4 +1,6 @@
-![](image.png)
+// ![](image.png)
+// ![](_images/image.png)
+// (créer dossier _images à la racine du repo)
 
 
 ## Concept
