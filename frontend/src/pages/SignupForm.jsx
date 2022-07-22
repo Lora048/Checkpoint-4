@@ -208,7 +208,8 @@ const signupForm = () => {
               />
             </FormControl>
             <Button
-              variant="solid_PrimaryColor"
+              color="white"
+              bgColor="#FAB8BA"
               type="button"
               onClick={() => handleSubmit()}
             >
@@ -221,7 +222,7 @@ const signupForm = () => {
               <Link to="/login">
                 <Text
                   color="#342c50"
-                  _hover={{ textDecoration: "none", color: "#A7197F" }}
+                  _hover={{ textDecoration: "none", color: "#FAB8BA" }}
                 >
                   Se connecter
                 </Text>
