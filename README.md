@@ -1,3 +1,6 @@
+![](image.png)
+
+
 ## Concept
 
 Ce projet représente mon portfolio. En le consultant, vous trouverez toutes mes réalisations, pour un client ou dans le cadre de projets étudiants.
