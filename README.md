@@ -16,5 +16,5 @@ Ce projet représente mon portfolio. En le consultant, vous trouverez toutes mes
 - `setup` : Initialise le frontend et le backend, et installe tous les outils et packages nécessaires.
 - `dev` : Démarre les serveurs (frontend + backend) dans un seul terminal.
 - `dev-front` : Démarre le serveur frontend.
-- `dev-back` : émarre le serveur backend.
+- `dev-back` : Démarre le serveur backend.
 - `fix` : Permet de fixer rapidement les erreurs trouvées par EsLint.
