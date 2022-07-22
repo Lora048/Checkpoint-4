@@ -16,9 +16,11 @@ import fondMobile from "../assets/background-mobile.png";
 import Header from "../components/Header";
 import banniere from "../assets/Hello4.png";
 import FormProjet from "../components/FormProjet";
+import FormSkill from "../components/FormSkill";
 
 export default function Admin() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const modal1 = useDisclosure();
+  const modal2 = useDisclosure();
 
   return (
     <Box
@@ -39,7 +41,7 @@ export default function Admin() {
           width="15rem"
           variant="ghost"
           colorScheme="blackAlpha"
-          onClick={onOpen}
+          onClick={modal1.onOpen}
         >
           PROJET
         </Button>
@@ -49,6 +51,7 @@ export default function Admin() {
           width="15rem"
           variant="ghost"
           colorScheme="blackAlpha"
+          onClick={modal2.onOpen}
         >
           COMPETENCE
         </Button>
@@ -62,13 +65,31 @@ export default function Admin() {
           CLIENT
         </Button>
       </Flex>
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={modal1.isOpen} onClose={modal1.onClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Ajouter un projet</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <FormProjet onOpen={onOpen} isOpen={isOpen} onClose={onClose} />
+            <FormProjet
+              onOpen={modal1.onOpen}
+              isOpen={modal1.isOpen}
+              onClose={modal1.onClose}
+            />
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+      <Modal isOpen={modal2.isOpen} onClose={modal2.onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Ajouter une compétence</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <FormSkill
+              onOpen={modal2.onOpen}
+              isOpen={modal2.isOpen}
+              onClose={modal2.onClose}
+            />
           </ModalBody>
         </ModalContent>
       </Modal>
