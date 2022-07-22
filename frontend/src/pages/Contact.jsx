@@ -1,4 +1,13 @@
-import { Box, Text, Divider, Button } from "@chakra-ui/react";
+import {
+  Box,
+  Text,
+  Divider,
+  Button,
+  FormLabel,
+  Flex,
+  Input,
+  Textarea,
+} from "@chakra-ui/react";
 
 import { FiArrowRight } from "react-icons/fi";
 import fondMobile from "../assets/background-mobile.png";
@@ -13,7 +22,7 @@ export default function Contact() {
       bgPos="center"
     >
       <Header onDark isSticky isStickyWhite={false} />
-      <Box pt={{ base: "8rem", lg: "11rem" }}>
+      <Box pt={{ base: "8rem", lg: "11rem" }} pb="3rem">
         <Box
           textAlign="left"
           ml={{ base: "1.5rem", lg: "3rem" }}
@@ -69,6 +78,28 @@ export default function Contact() {
           >
             Remplissez ce formulaire
           </Text>
+          <Flex justify="flex-end">
+            <Flex
+              justify="space-between"
+              align="stretch"
+              width="50vw"
+              height="25rem"
+              direction="column"
+              mt="2rem"
+            >
+              <FormLabel>Prénom</FormLabel>
+              <Input placeholder="Prénom" />
+              <FormLabel>Nom</FormLabel>
+              <Input placeholder="Nom" />
+              <FormLabel>E-mail</FormLabel>
+              <Input placeholder="E-mail" />
+              <FormLabel>Votre demande</FormLabel>
+              <Textarea placeholder="Votre demande" />
+              <Button mt="1.5rem" type="submit">
+                Envoyer votre demande
+              </Button>
+            </Flex>
+          </Flex>
         </Box>
       </Box>
     </Box>

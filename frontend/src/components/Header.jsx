@@ -10,6 +10,7 @@ import {
   MenuItem,
   MenuDivider,
   Divider,
+  Box,
 } from "@chakra-ui/react";
 
 import { useState, useEffect } from "react";
@@ -111,94 +112,114 @@ export default function Header({ isSticky = false, isStickyWhite = false }) {
               "2xl": "52rem",
             }}
           >
-            <Link to="/">
-              <Divider
-                orientation="horizontal"
-                opacity="100"
-                marginBottom="5px"
-                border="1px"
-                borderColor="white"
-              />
-              <Text
-                color={
-                  (isSticky && scrollPosition > 50) || isStickyWhite
-                    ? "purple.dark"
-                    : "white"
-                }
-                fontWeight="bold"
-                _hover={{
-                  color: "#FAB8BA",
-                }}
-              >
-                PROJETS
-              </Text>
-            </Link>
-            <Link to="/a-propos">
-              <Divider
-                orientation="horizontal"
-                opacity="100"
-                marginBottom="5px"
-                border="1px"
-                borderColor="white"
-              />
-              <Text
-                color={
-                  (isSticky && scrollPosition > 50) || isStickyWhite
-                    ? "purple.dark"
-                    : "white"
-                }
-                fontWeight="bold"
-                _hover={{
-                  color: "#FAB8BA",
-                }}
-              >
-                A PROPOS
-              </Text>
-            </Link>
-            <Link to="/le-projet">
-              <Divider
-                orientation="horizontal"
-                opacity="100"
-                marginBottom="5px"
-                border="1px"
-                borderColor="white"
-              />
-              <Text
-                color={
-                  (isSticky && scrollPosition > 50) || isStickyWhite
-                    ? "purple.dark"
-                    : "white"
-                }
-                fontWeight="bold"
-                _hover={{
-                  color: "#FAB8BA",
-                }}
-              >
-                BLOG
-              </Text>
-            </Link>
-            <Link to="/contact">
-              <Divider
-                orientation="horizontal"
-                opacity="100"
-                marginBottom="5px"
-                border="1px"
-                borderColor="white"
-              />
-              <Text
-                color={
-                  (isSticky && scrollPosition > 50) || isStickyWhite
-                    ? "purple.dark"
-                    : "white"
-                }
-                fontWeight="bold"
-                _hover={{
-                  color: "#FAB8BA",
-                }}
-              >
-                CONTACT
-              </Text>
-            </Link>
+            <Box role="group">
+              <Link to="/">
+                <Divider
+                  orientation="horizontal"
+                  opacity="100"
+                  marginBottom="5px"
+                  border="1px"
+                  borderColor="white"
+                  _groupHover={{
+                    borderColor: "#FAB8BA",
+                  }}
+                />
+                <Text
+                  color={
+                    (isSticky && scrollPosition > 50) || isStickyWhite
+                      ? "purple.dark"
+                      : "white"
+                  }
+                  fontWeight="bold"
+                  _groupHover={{
+                    color: "#FAB8BA",
+                  }}
+                >
+                  PROJETS
+                </Text>
+              </Link>
+            </Box>
+            <Box role="group">
+              <Link to="/a-propos">
+                <Divider
+                  orientation="horizontal"
+                  opacity="100"
+                  marginBottom="5px"
+                  border="1px"
+                  borderColor="white"
+                  _groupHover={{
+                    borderColor: "#FAB8BA",
+                  }}
+                />
+                <Text
+                  color={
+                    (isSticky && scrollPosition > 50) || isStickyWhite
+                      ? "purple.dark"
+                      : "white"
+                  }
+                  fontWeight="bold"
+                  _hover={{
+                    color: "#FAB8BA",
+                  }}
+                >
+                  A PROPOS
+                </Text>
+              </Link>
+            </Box>
+            <Box role="group">
+              <Link to="/le-projet">
+                <Divider
+                  orientation="horizontal"
+                  opacity="100"
+                  marginBottom="5px"
+                  border="1px"
+                  borderColor="white"
+                  _groupHover={{
+                    borderColor: "#FAB8BA",
+                  }}
+                />
+                <Text
+                  color={
+                    (isSticky && scrollPosition > 50) || isStickyWhite
+                      ? "purple.dark"
+                      : "white"
+                  }
+                  fontWeight="bold"
+                  _hover={{
+                    color: "#FAB8BA",
+                  }}
+                >
+                  BLOG
+                </Text>
+              </Link>
+            </Box>
+            <Box role="group">
+              <Link to="/contact">
+                <Divider
+                  orientation="horizontal"
+                  opacity="100"
+                  marginBottom="5px"
+                  border="1px"
+                  borderColor="white"
+                  _groupHover={{
+                    borderColor: "#FAB8BA",
+                  }}
+                />
+                <Text
+                  color={
+                    (isSticky && scrollPosition > 50) || isStickyWhite
+                      ? "purple.dark"
+                      : "white"
+                  }
+                  fontWeight="bold"
+                  _hover={{
+                    color: "#FAB8BA",
+                  }}
+                >
+                  CONTACT
+                </Text>
+              </Link>
+            </Box>
           </Flex>
           {isSignUp === true ? (
             <Menu>
