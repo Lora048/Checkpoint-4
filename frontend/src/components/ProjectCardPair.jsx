@@ -48,7 +48,7 @@ export default function ProjectCardPair({ projet }) {
           <Image
             borderRadius="2px"
             src={projet.image}
-            width={{ md: "45%", lg: "30%", xl: "50%", "2xl": "65%" }}
+            width={{ md: "35%", lg: "30%", xl: "50%", "2xl": "65%" }}
           />
           <Flex
             direction="column"
@@ -56,7 +56,7 @@ export default function ProjectCardPair({ projet }) {
             marginRight={{ base: "4%", md: "5%", lg: "5%", xl: "8%" }}
             mb={{ base: "8%", md: "none" }}
           >
-            <Flex align="baseline" justify="space-between">
+            <Flex align="center" justify="space-between">
               <Text
                 color="gray"
                 textAlign="left"

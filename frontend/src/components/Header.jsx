@@ -66,7 +66,7 @@ export default function Header({ isSticky = false, isStickyWhite = false }) {
       paddingX={{ base: "2%", lg: "5%" }}
       paddingY="30px"
       bgColor={((isSticky && scrollPosition > 50) || isStickyWhite) && "white"}
-      w={isSticky || isStickyWhite ? "100%" : "100vp"}
+      w={isSticky || isStickyWhite ? "100vw" : "100vp"}
       zIndex="999"
     >
       <Flex w="100%" alignItems="center" justify="space-between">

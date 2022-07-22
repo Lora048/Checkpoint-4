@@ -5,13 +5,21 @@ import { BiPaperPlane } from "react-icons/bi";
 import fondMobile from "../assets/background-mobile.png";
 import Header from "../components/Header";
 import SkillCard from "../components/SkillCard";
+import ClientCard from "../components/ClientCard";
 import backendAPI from "../services/backendAPI";
 
 export default function About() {
   const [technos, setTechnos] = useState([]);
+  const [clients, setClients] = useState([]);
   useEffect(() => {
     backendAPI.get(`/api/technos`).then((response) => {
       setTechnos(response.data);
+    });
+  }, []);
+
+  useEffect(() => {
+    backendAPI.get(`/api/clients`).then((response) => {
+      setClients(response.data);
     });
   }, []);
 
@@ -95,6 +103,30 @@ export default function About() {
           >
             {technos.map((techno) => (
               <SkillCard techno={techno} />
+            ))}
+          </Flex>
+        </Box>
+        <Divider
+          width="60%"
+          borderColor="gray"
+          border="1px"
+          opacity="30%"
+          mt={{ base: "5rem", lg: "10rem" }}
+          mb="3rem"
+        />
+        <Box textAlign="left" mr={{ base: "2rem", md: "3rem" }}>
+          <Text color="gray" fontSize={{ base: "50px", lg: "64px" }} ml="2rem">
+            Clients
+          </Text>
+          <Flex
+            justify="space-between"
+            width={{ base: "100%", lg: "70%" }}
+            ml={{ base: "0", lg: "30%" }}
+            align="baseline"
+            wrap="wrap"
+          >
+            {clients.map((client) => (
+              <ClientCard client={client} />
             ))}
           </Flex>
         </Box>
